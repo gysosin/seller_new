@@ -81,6 +81,7 @@ Route::get('orderview','viewordersControler@index');
 Route::get('transactions','transactionsController@index');
 Route::get('sellinghistory','sellinghistory@index');
 Route::get('Settlement-report','transactions@Settlement_report');
+Route::get('Settlement','SettlementController@index');
 
 
 

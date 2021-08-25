@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\sub_categories;
+use App\Product_photos;
 class ProductController extends Controller
 {
     /**
@@ -30,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.addproduct');
+        $categories= db::table('categories')->get();
+        return view('product.addproduct',["categories" => $categories]);
     }
 
     /**
@@ -41,20 +43,26 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $request->validate([
+            'product_image' =>'required|image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+        $product_image = time().'.'.$request->product_image->extension(); 
+        $request->product_image->move(public_path('products_images'),$product_image); 
+        $login_id = Auth::user()->id; 
+
         $res=new product;
-     
+        $res->user_id=$login_id;
         $res->name=$request->input('name');
         $res->description=$request->input('description');
+        $res->slug=$request->input('name');
         $res->stock=$request->input('stock');
-        /* $res->category=$request->input('category');
-        $res->scategory=$request->input('scategory'); */
+        $res->category_id=$request->input('category');
+        $res->sub_category_id=$request->input('subcategory'); 
         $res->price=$request->input('price');
-
-
-  
+        $res->photo = $product_image;
+        $res->status='0';// Inactive
         $res->save();
-       
+     
         $request->session()->flash('msg','data submitted');
         return redirect('product');
     }
@@ -100,14 +108,10 @@ class ProductController extends Controller
         $res->name=$request->input('name');
         $res->description=$request->input('description');
         $res->stock=$request->input('stock');
-        /* $res->category=$request->input('category');
-        $res->scategory=$request->input('scategory'); */
+        $res->category_id=$request->input('category');
+        $res->sub_category_id=$request->input('subcategory'); 
         $res->price=$request->input('price');
-
-
-  
         $res->save();
-       
         $request->session()->flash('msg','data updated');
         return redirect('product');
     }
@@ -122,5 +126,15 @@ class ProductController extends Controller
     {
         product::destroy(array('id',$id));
         return redirect('product');
+    }
+
+    public function subCat(Request $request)
+    {
+         
+        $parent_id = $request->cat_id;
+         
+        $subcategories = sub_categories::where('category_id',$parent_id)->get();
+    // dd($subcategories);
+      return view('ajax_forms.subcategories', compact('subcategories'));   
     }
 }

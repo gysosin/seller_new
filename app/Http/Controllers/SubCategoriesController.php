@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SubCategoriesController extends Controller
 {
  
-    function show()
+    function show() 
     {
        
        // return view('categories')->with('categoriesArr',categories::all());

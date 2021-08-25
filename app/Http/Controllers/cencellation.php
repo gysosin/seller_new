@@ -10,7 +10,12 @@ class cencellation extends Controller
     function index()
     {
         $login_id = Auth::user()->id; 
-        $data= db::table('failed_jobs')->where('user_id',$login_id)->get();
+        $data = DB::table('orders')
+        ->join('order_details', 'orders.id', '=','order_details.order_id')
+        ->join('products', 'products.id	', '=','order_details.product_id')
+        ->join('addresses', 'addresses.user_id', '=','orders.user_id')
+        ->where('products.user_id', $login_id)
+        ->get();
         return view('cencellation/cencellation',['data'=>$data]);
         
     }

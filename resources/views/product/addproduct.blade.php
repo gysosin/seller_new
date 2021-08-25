@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', 'dashboard')
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @section('body')
 <section id="basic-input">
     <div class="row">
@@ -31,7 +31,7 @@
                                                 <div class="card-content collapse show">
                                                     <div class="card-body">
                                                         <p>Describe your product</p>
-                                                        <div class="row"><textarea id="description" name="description" rows="4" cols="140">
+                                                        <div class="row"><textarea id="description" class="form-control"  name="description" rows="4" cols="140">
 </textarea>
                                                         </div>
                                                     </div>
@@ -54,34 +54,25 @@
                                                                 Category
                                                             </div>
                                                             <div class="form-group" data-select2-id="125">
-                                                                <select class="select2 form-control select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true" name="category">
-                                                                    <option value="square" data-select2-id="3">Square</option>
-                                                                    <option value="rectangle" data-select2-id="133">Rectangle</option>
-                                                                    <option value="rombo" data-select2-id="134">Rombo</option>
-                                                                    <option value="romboid" data-select2-id="135">Romboid</option>
-                                                                    <option value="trapeze" data-select2-id="136">Trapeze</option>
-                                                                    <option value="traible" data-select2-id="137">Triangle</option>
-                                                                    <option value="polygon" data-select2-id="138">Polygon</option>
-                                                                </select>
+                                                                <select class="form-control"  onchange="getcat(this.value);" id="category"   name="category">
+                                                                <option selected>Select category</option>
+@foreach ($categories as $item)
+<option value="{{ $item->id }}">{{ $item->name }}</option>
+@endforeach
+</select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6 col-12" data-select2-id="126">
+                                                        <div class="col-sm-6 col-12" id="subcat_id_div">
                                                             <div class="text-bold-600 font-medium-2">
                                                                 Sub category </div>
                                                             <div class="form-group" data-select2-id="125">
-                                                                <select class="select2 form-control select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true" name="scategory">
-                                                                    <option value="square" data-select2-id="3">Square</option>
-                                                                    <option value="rectangle" data-select2-id="133">Rectangle</option>
-                                                                    <option value="rombo" data-select2-id="134">Rombo</option>
-                                                                    <option value="romboid" data-select2-id="135">Romboid</option>
-                                                                    <option value="trapeze" data-select2-id="136">Trapeze</option>
-                                                                    <option value="traible" data-select2-id="137">Triangle</option>
-                                                                    <option value="polygon" data-select2-id="138">Polygon</option>
-                                                                </select>
+                    <select class="form-control" name="subcategory" id="subcategory">
+                           <option value="-1">-Select subcategory-</option>    
+                              </select>
                                                             </div>
-                                                        </div>
+                                                        </div> 
 
-                                                    
+                                                          
 
 
                                                     </div>
@@ -117,8 +108,8 @@
 
                                                         <div class="form-label-group">
                                                             <div class="custom-file">
-                                                                <input type="file" class="custom-file-input" id="signature" name="signature">
-                                                                <label class="custom-file-label" for="signature">Photo</label>
+                                                                <input type="file" class="custom-file-input" id="signatproduct_imageure" name="product_image">
+                                                                <label class="custom-file-label" for="signature">Upload image</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -141,6 +132,21 @@
     </div>
 
 </section>
+
+<script type="text/javascript">
+
+
+ function getcat(cat_id) {
+        $.get("{{ url('subcat') }}", {
+            cat_id: cat_id,
+        }, function(response) {
+            // console.log(response);
+            $('#subcat_id_div').html(response);
+        }); 
+ }
+
+</script>
+
 @section('js')
 <script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
 <script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>

@@ -47,13 +47,13 @@
                                             <tr>
                                               
                                             <th>id</th>
-                    <th>user_id</th>
+                   
                     <th>order_no</th>
-                    <th>razorpay_id</th>
-                    <th>date</th>
-                    <th>payment_method</th>
-                    <th>created_at</th>
-                    <th>updated_at</th>
+                    <th>Customer name</th>
+                    <th>customer number</th>
+                    <th>traking_no</th>
+                    <th>Payment</th>
+                    <th>payment method</th>
                     <th>Action</th>
                                             </tr>
                                         </thead>
@@ -61,25 +61,13 @@
                                         @foreach($data as $list)
                 <tr>
                     <td>{{$list->id}}</td>
-                    <td>{{$list->user_id}}</td>
-                    <td class="product-name">{{$list->order_no}}</td>
-                    <td>{{$list->razorpay_id}}</td>
-                    <td>{{$list->date}}</td>
+                    <td >{{$list->order_no}}</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->phone}}</td>
+                    <td>{{$list->traking_no}}</td>
+                    <td>{{$list->paid}}</td>
                     <td>{{$list->payment_method}}</td>
-                    <td>
-                        <div class="chip chip-warning">
-                            <div class="chip-body">
-                                <div class="chip-text">{{$list->created_at}}</div>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="chip chip-warning">
-                            <div class="chip-body">
-                                <div class="chip-text">{{$list->updated_at}}</div>
-                            </div>
-                        </div>
-                    </td>
+                    
                     
                     <td>
                         <div class="dropdown dropright">

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'Live-view')
+@section('title', 'Cancellaction')
 @section('body')
 
 <div class="content-wrapper">
@@ -48,35 +48,31 @@
                                     <thead>
                 <tr>
                     <th>id</th>
-                    <th>uuid </th>
-                    <th>connection</th>
-                    <th>queue</th>
-                    <th>payload</th>
-                    <th>exception</th>
-                    <th>failed_at</th>
+                    <th>Customer name  </th>
+                    <th>Order no </th>
+                    <th>address</th>
+                    <th>cancellation confirmed</th>
+                    <th>Price</th>
+                   
                     
                     
                 </tr>
             </thead>
             <tbody>
+            @if(count($data))
             @foreach($data as $list)
                 <tr>
                     <td>{{$list->id}}</td>
-                    <td>{{$list->uuid}}</td>
-                    <td>{{$list->connection}}</td>
-                    <td>{{$list->queue}}</td>
-                    <td>{{$list->payload}}</td>
-                    <td>{{$list->exception}}</td>
-                    <td>
-                        <div class="chip chip-warning">
-                            <div class="chip-body">
-                                <div class="chip-text">{{$list->failed_at}}</div>
-                            </div>
-                        </div>
-                    </td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->order_no}}</td>
+                    <td>{{$list->address}}</td>
+                    <td>{{$list->cancellation_confirmed}}</td>
+                    <td>{{$list->price}}</td>
+                  
                     </td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
                                      
                                     </table>

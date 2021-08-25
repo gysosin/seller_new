@@ -41,7 +41,7 @@
 
   <!--               <li><a href='/dashboard-purchasehistory'><i class="fa fa-history"></i><span class="menu-item" data-i18n="Checkbox">Purchase History</span></a>
                 </li> -->
-                <li><a href="{{ url('Settlement-report') }}"><i class="fa fa-history"></i><span class="menu-item" data-i18n="Checkbox">Settlement Report</span></a>
+                <li><a href="{{ url('Settlement') }}"><i class="fa fa-history"></i><span class="menu-item" data-i18n="Checkbox">Settlement Report</span></a>
                 </li>
                 <li class=" navigation-header"><span>Transactions</span>
                 </li>
