@@ -2,7 +2,6 @@
 @section('title', 'Live-view')
 @section('body')
 
-<div class="content-wrapper">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -37,15 +36,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                           
+
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
                                 <p class="card-text"></p>
                                 <div class="table-responsive">
                                     <table class="table zero-configuration">
-                                  
-                         
+
+
                                     <thead>
                 <tr>
                     <th>id</th>
@@ -83,7 +82,7 @@
                     </td>
                 </tr>
                 @endforeach
-                                     
+
                                     </table>
                                 </div>
                             </div>

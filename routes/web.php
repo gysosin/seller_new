@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 Route::get('/register', function () {
     return view('register');
-   
+
 });
 
 Auth::routes();
@@ -36,7 +36,7 @@ Route::post('/register', 'Auth\AuthController@storeUser');
 Route::get('/login', 'Auth\AuthController@login')->name('login');
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::get('logout', 'Auth\AuthController@logout')->name('logout');
- 
+
 /* }); */
 Route::resource('product_create','ProductController@cat');
 Route::get('product','ProductController@show');
@@ -53,7 +53,7 @@ Route::post('/register', 'Auth\AuthController@storeUser');
 Route::get('/login', 'Auth\AuthController@login')->name('login');
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::get('logout', 'Auth\AuthController@logout')->name('logout');
- 
+
 /* }); */
 Route::resource('product_create','ProductController@cat');
 Route::get('product','ProductController@show');
@@ -66,23 +66,24 @@ Route::post('product_update/{id}','ProductController@update')->name('product.upd
 Route::get('productreview','productreview@index');
 Route::get('productoverview','productoverview@index');
 
-//cencellation*************************************   
+//cencellation*************************************
 Route::get('cencellation','cencellation@index');
 
 //categories*************************************
 Route::get('categories','categoriesController@show');
 Route::get('Sub_categories','SubCategoriesController@show');
 
-//orders*************************************   
+//orders*************************************
 Route::get('allOrders','allordersController@index');
 Route::get('orderview','viewordersControler@index');
 
-//transactions*************************************   
+//transactions*************************************
 Route::get('transactions','transactionsController@index');
 Route::get('sellinghistory','sellinghistory@index');
 Route::get('Settlement-report','transactions@Settlement_report');
+Route::get('subcat', 'ProductController@subCat');
 Route::get('Settlement','SettlementController@index');
-
+Route::get('stock','StockController@index');
 
 
 

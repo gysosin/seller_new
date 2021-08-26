@@ -15,7 +15,7 @@ class allordersController extends Controller
         ->join('order_details', 'orders.id', '=','order_details.order_id')
         ->join('products', 'products.id	', '=','order_details.product_id')
         ->join('addresses', 'addresses.user_id', '=','orders.user_id')
-        ->where('users_id', $login_id)
+        ->where('products.user_id', $login_id)
         ->get();
         return view('order/allOrders',['data'=>$data]);
         

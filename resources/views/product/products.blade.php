@@ -133,6 +133,7 @@
                                                 <th>created_at</th>
                                                 <th>updated_at</th>
                                                 <th>Status</th>
+                                                <th></th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -149,7 +150,7 @@
                                                 <td>{{$product->created_at}}</td>
                                                 <td>{{$product->updated_at}}</td>
                                                 <td><label class="tgl">
-                                                <input type="checkbox" checked />
+                                                <input type="checkbox" value="{{$product->status}}" name="status"/>
                                                 <span class="tgl_body">
                                                     <span class="tgl_switch"></span>
                                                     <span class="tgl_track">
@@ -158,6 +159,10 @@
                                                     </span>
                                                 </span>
                                             </label></td>
+                                            <td>
+                                            <a href="stock"><button class="btn btn-flat-danger  mr-1 mb-1 waves-effect waves-light" type="button" id="" aria-expanded="false">
+                                                        Stock
+                                                    </button></a></td>
                                                 <td>
                                             <div class="btn-group">
                                                 <div class="dropdown">

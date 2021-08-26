@@ -2,7 +2,6 @@
 @section('title', 'Live-view')
 @section('body')
 
-<div class="content-wrapper">
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -37,15 +36,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                           
+
                         </div>
                         <div class="card-content">
                             <div class="card-body card-dashboard">
                                 <p class="card-text"></p>
                                 <div class="table-responsive">
                                     <table class="table zero-configuration">
-                                  
-                         
+
+
                                     <thead>
                 <tr>
                     <th>id</th>
@@ -53,7 +52,7 @@
                     <th>date</th>
                     <th>created_at</th>
                     <th>updated_at</th>
-                </tr> 
+                </tr>
             </thead>
             <tbody>
             @foreach($data as $list)
@@ -75,12 +74,12 @@
                             </div>
                         </div>
                     </td>
-                    
-                    
+
+
                 </tr>
                 @endforeach
             </tbody>
-                                     
+
                                     </table>
                                 </div>
                             </div>

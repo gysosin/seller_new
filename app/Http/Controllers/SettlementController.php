@@ -14,10 +14,10 @@ class SettlementController extends Controller
      */
     function index()
     {
-        //$login_id = Auth::user()->id; 
+        //$login_id = Auth::user()->id;
         $data= db::table('purchases')->get();
         return view('transaction/settlement',['data'=>$data]);
-        
+
     }
 
     /**
