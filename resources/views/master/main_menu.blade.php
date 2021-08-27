@@ -17,7 +17,7 @@
                 </li>
                 <li class=" navigation-header"><span>Orders</span>
                 </li>
-                <li class=" nav-item"><a href="{{ url('allOrders') }}"><i class="fa fa-opencart"></i></i><span class="menu-title" data-i18n="Data List">Orders</span></a>
+                <li class=" nav-item"><a href="{{ url('orders') }}"><i class="fa fa-opencart"></i></i><span class="menu-title" data-i18n="Data List">Orders</span></a>
                
             </li>
 

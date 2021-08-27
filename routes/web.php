@@ -78,7 +78,7 @@ Route::get('categories','categoriesController@show');
 Route::get('Sub_categories','SubCategoriesController@show');
 
 //orders*************************************
-Route::get('allOrders','allordersController@index');
+Route::get('orders','allordersController@index');
 Route::get('orderview','viewordersControler@index');
 
 //transactions*************************************
