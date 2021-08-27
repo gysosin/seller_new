@@ -150,7 +150,7 @@
                                                 <td>{{$product->created_at}}</td>
                                                 <td>{{$product->updated_at}}</td>
                                                 <td><label class="tgl">
-                                                <input type="checkbox" value="{{$product->status}}" name="status"/>
+                                                <input class="toggle-class" type="checkbox"  name="status" data-id="{{$product->id}}"/>
                                                 <span class="tgl_body">
                                                     <span class="tgl_switch"></span>
                                                     <span class="tgl_track">
@@ -160,7 +160,7 @@
                                                 </span>
                                             </label></td>
                                             <td>
-                                            <a href="stock"><button class="btn btn-flat-danger  mr-1 mb-1 waves-effect waves-light" type="button" id="" aria-expanded="false">
+                                            <a href="stock/{{$product->id}}"><button class="btn btn-flat-danger  mr-1 mb-1 waves-effect waves-light" type="button" id="" aria-expanded="false">
                                                         Stock
                                                     </button></a></td>
                                                 <td>
@@ -191,7 +191,25 @@
                 </div>
             </div>
         </section>
+<script>
+                $(function(){
+                    $('.toggle-class').change(function(){
+                        var status =$(this).prop('checked') == true ? 1:0;
+                        var id =$(this).data('id');
+                        $ajax({
+                            type:"GET",
+                            dataType: "json",
+                            url: 'changeStatus',
+                            data:{'status' : status, 'id': product_id},
+                            success: function(data){
+                                console.log(data.success)
+                            }
 
+                        })
+                    })
+                });
+
+</script>
         <!-- Column selectors with Export Options and print table -->
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

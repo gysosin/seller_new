@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,10 @@ Route::get('product_delete/{id}','ProductController@destroy');
 Route::get('product_create','ProductController@create');
 Route::post('product_submit','ProductController@store');
 Route::get('product_edit/{id}','ProductController@edit');
+Route::get('stock/{id}','ProductController@stock');
+Route::post('product_stock/{id}','ProductController@stock_u')->name('product.stock');
 Route::post('product_update/{id}','ProductController@update')->name('product.update');
+Route::get('changeStatus','ProductController@changeStatus')->name('changeStatus');
 
 Route::get('productreview','productreview@index');
 Route::get('productoverview','productoverview@index');
@@ -83,7 +87,7 @@ Route::get('sellinghistory','sellinghistory@index');
 Route::get('Settlement-report','transactions@Settlement_report');
 Route::get('subcat', 'ProductController@subCat');
 Route::get('Settlement','SettlementController@index');
-Route::get('stock','StockController@index');
+
 
 
 

@@ -94,7 +94,10 @@ class ProductController extends Controller
     {
         return view('product.editproduct')->with('productArr',product::find($id));
     }
-
+    public function stock(product $product, $id)
+    {
+        return view('product.stock')->with('productArr',product::find($id));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -113,6 +116,17 @@ class ProductController extends Controller
         $res->sub_category_id=$request->input('subcategory');
         $res->price=$request->input('price');
         $res->status=$request->input('status');
+        $res->save();
+        $request->session()->flash('msg','data updated');
+        return redirect('product');
+    }
+    public function stock_u(Request $request, product $product)
+    {
+        $res=product::find($request->id);
+
+
+        $res->stock=$request->input('stock');
+
         $res->save();
         $request->session()->flash('msg','data updated');
         return redirect('product');
@@ -139,4 +153,13 @@ class ProductController extends Controller
     // dd($subcategories);
       return view('ajax_forms.subcategories', compact('subcategories'));
     }
+
+    public function changeStatus(Request $request)
+        {
+                    $product =  product::find($request->id);
+                    $product ->status=$request->status;
+                    $product->save();
+
+    }
+    
 }

@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Add product</h4>
                 </div>
-                <form method="post" action="product_submit">
+                <form method="post" action="product_submit" enctype="multipart/form-data">
                     @csrf
                     <div class="card-content">
                         <div class="card-body">
@@ -40,7 +40,7 @@
                                         </div>
                                     </div>
                                 </section>
-                       
+
                                         <div class="card">
                                             <div class="card-header">
                                                 <h4 class="card-title">General Information of product</h4>
@@ -67,12 +67,12 @@
                                                                 Sub category </div>
                                                             <div class="form-group" data-select2-id="125">
                     <select class="form-control" name="subcategory" id="subcategory">
-                           <option value="-1">-Select subcategory-</option>    
+                           <option value="-1">-Select subcategory-</option>
                               </select>
                                                             </div>
-                                                        </div> 
+                                                        </div>
 
-                                                          
+
 
 
                                                     </div>
@@ -89,9 +89,9 @@
                                                                             <input type="text" class="form-control" id="basicInput" placeholder="Price" name="price">
                                                                         </fieldset>
                                                                     </div>
-                                                                                                                                    
-                                                               
-                                                                    
+
+
+
                                                                     <div class="col-xl-12 col-md-12 col-12 mb-6">
                                                                         <fieldset class="form-group">
                                                                             <label for="basicInput">Total stock</label>
@@ -142,7 +142,7 @@
         }, function(response) {
             // console.log(response);
             $('#subcat_id_div').html(response);
-        }); 
+        });
  }
 
 </script>
