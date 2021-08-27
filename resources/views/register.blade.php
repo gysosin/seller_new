@@ -52,8 +52,8 @@
                     <div class="col-xl-8 col-10 d-flex justify-content-center">
                         <div class="card bg-authentication rounded-0 mb-0">
                             <form action="{{route('register')}}" method="POST" class="form" enctype="multipart/form-data">
-                            @csrf
-                              
+                                @csrf
+
                                 <div class="col-lg-12 col-12 p-0">
                                     <div class="card rounded-0 mb-0 p-2">
                                         <div class="col-md-6 col-12">
@@ -71,7 +71,7 @@
 
                                                     }
                                                 </script>
-                                                <select class="form-control" id="ddlPassport" onchange="ShowHideDiv()" >
+                                                <select class="form-control" id="ddlPassport" onchange="ShowHideDiv()">
                                                     <option>Select one option</option>
                                                     <option value="Y">I have GSTIN</option>
                                                     <option value="N">I don't have GSTIN</option>
@@ -88,61 +88,61 @@
                                                     <div class="form-body">
                                                         <div class="row">
                                                             <div class="col-md-6 col-12">
-                                                            <label for="inputName">Name</label>
+                                                                <label for="inputName">Name</label>
                                                                 <div class="form-label-group">
-                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
-                                                        @error('name')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                      
-                                                    </div>
+                                                                    @error('name')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
-                                                            <label >Email</label>
+                                                                <label>Email</label>
                                                                 <div class="form-label-group">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
-                                                        @error('email')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                    
-                                                    </div>
+                                                                    @error('email')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
+
+                                                                </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>Password</label>
                                                                 <div class="form-label-group">
-                                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                                                @error('password')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                            @enderror 
+                                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                                    @error('password')
+                                                                    <span class="invalid-feedback" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                    @enderror
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>Confirm Password</label>
                                                                 <div class="form-label-group">
-                                                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                                                    
+                                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-6 col-12">
                                                                 <label>Mobile Number</label>
                                                                 <div class="form-label-group">
-                                                                <input type="text" name="Mobile_Number" id="mobile" class="form-control" placeholder="Mobile number" required data-validation-required-message="The field must be at least 10 characters." minlength="10" placeholder="Enter minimum 10 characters">
-                                                                    
+                                                                    <input type="text" name="Mobile_Number" id="mobile" class="form-control" placeholder="Mobile number" required data-validation-required-message="The field must be at least 10 characters." minlength="10" placeholder="Enter minimum 10 characters">
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>country</label>
                                                                 <fieldset class="form-group">
-                                                                <input type="text" name="country" id="country" class="form-control" placeholder="country" required data-validation-required-message="This field is required">
+                                                                    <input type="text" name="country" id="country" class="form-control" placeholder="country" required data-validation-required-message="This field is required">
 
                                                                     </select>
                                                                 </fieldset>
@@ -150,7 +150,7 @@
                                                             <div class="col-md-6 col-12">
                                                                 <label>State</label>
                                                                 <fieldset class="form-group">
-                                                                <input type="text" name="state" id="State" class="form-control" placeholder="State" required data-validation-required-message="This field is required">
+                                                                    <input type="text" name="state" id="State" class="form-control" placeholder="State" required data-validation-required-message="This field is required">
 
                                                                     </select>
                                                                 </fieldset>
@@ -158,7 +158,7 @@
                                                             <div class="col-md-6 col-12">
                                                                 <label>city</label>
                                                                 <fieldset class="form-group">
-                                                                <input type="text" name="city" id="city" class="form-control" placeholder="city" required data-validation-required-message="This field is required">
+                                                                    <input type="text" name="city" id="city" class="form-control" placeholder="city" required data-validation-required-message="This field is required">
                                                                     </select>
                                                                 </fieldset>
                                                             </div>
@@ -172,46 +172,46 @@
                                                                 <label>GSTIN NUMBER</label>
                                                                 <div class="form-label-group">
 
-                                                                <input type="text" name="GSTIN_NUMBER" id="gstin" class="form-control" placeholder="GSTIN NUMBER" >
-                                                                    
+                                                                    <input type="text" name="GSTIN_NUMBER" id="gstin" class="form-control" placeholder="GSTIN NUMBER">
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12" id="dvPassport2" style="display: none">
                                                                 <label>Company Pancard</label>
                                                                 <div class="form-label-group">
 
-                                                                <input type="text" name="Company_Pancard" id="cpancard" class="form-control" name="cpancard" placeholder="Company Pancard " >
-                                                                    
+                                                                    <input type="text" name="Company_Pancard" id="cpancard" class="form-control" name="cpancard" placeholder="Company Pancard ">
+
                                                                 </div>
                                                             </div>
-                                                      
+
 
                                                             <div class="col-md-6 col-12">
                                                                 <label>Personal PANCARD</label>
                                                                 <div class="form-label-group">
-                                                                <input type="text" name="Personal_PANCARD" id="gstin" class="form-control" id="ppancard" name="ppancard" placeholder="Personal PANCARD" required data-validation-required-message="This field is required">
-                                                                    
+                                                                    <input type="text" name="Personal_PANCARD" id="gstin" class="form-control" id="ppancard" name="ppancard" placeholder="Personal PANCARD" required data-validation-required-message="This field is required">
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>Adhar Card</label>
                                                                 <div class="form-label-group">
-                                                                <input type="text" name="AdharCard" id="gstin" class="form-control" name="adhar" id="adhar" placeholder="Adhar Card" required data-validation-required-message="The field must be at least 12 characters." minlength="12" placeholder="Enter minimum 12 characters">
-                                                                    
+                                                                    <input type="text" name="AdharCard" id="gstin" class="form-control" name="adhar" id="adhar" placeholder="Adhar Card" required data-validation-required-message="The field must be at least 12 characters." minlength="12" placeholder="Enter minimum 12 characters">
+
                                                                 </div>
-                                                            </div>                                   
+                                                            </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>BUSINESS TYPE</label>
                                                                 <div class="form-label-group">
-                                                                <input type="text" name="BUSINESS_TYPE" id="gstin" class="form-control" id="btype" name="BUSINESS_TYPE" placeholder="BUSNINESS TYPE" required data-validation-required-message="This field is required">
-                                                                    
+                                                                    <input type="text" name="BUSINESS_TYPE" id="gstin" class="form-control" id="btype" name="BUSINESS_TYPE" placeholder="BUSNINESS TYPE" required data-validation-required-message="This field is required">
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6 col-12">
                                                                 <label>PINCODE</label>
                                                                 <div class="form-label-group">
-                                                                <input type="text" name="PINCODE" id="gstin" class="form-control" id="pincode" name="PINCODE" placeholder="PINCODE" required data-validation-required-message="This field is required">
-                                                                   
+                                                                    <input type="text" name="PINCODE" id="gstin" class="form-control" id="pincode" name="PINCODE" placeholder="PINCODE" required data-validation-required-message="This field is required">
+
                                                                 </div>
                                                             </div>
 
@@ -219,7 +219,7 @@
                                                                 <label>Address</label>
                                                                 <div class="form-label-group">
                                                                     <textarea class="form-control" aria-label="With textarea" placeholder="Full Address" id="faddress" name="Address"></textarea>
-                                                                    
+
                                                                 </div>
                                                             </div>
 
@@ -232,34 +232,34 @@
                                                                 <div class="col-md-6 col-12">
                                                                     <label>Bank Account Number</label>
                                                                     <div class="form-label-group">
-                                                                        <input type="text" id="bankacc" class="form-control" placeholder="Bank Account Number" name="Bank_Account_Number"  required data-validation-required-message="This field is required">
-                                                                        
+                                                                        <input type="text" id="bankacc" class="form-control" placeholder="Bank Account Number" name="Bank_Account_Number" required data-validation-required-message="This field is required">
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 col-12">
                                                                     <label>Bank IFSC CODE</label>
                                                                     <div class="form-label-group">
                                                                         <input type="TEXT" id="bankifsc" class="form-control" placeholder="Bank IFSC CODE" name="IFSC_CODE" required data-validation-required-message="This field is required">
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                                  <h4 class="card-title">Upload Documents</h4>
+                                                            <h4 class="card-title">Upload Documents</h4>
                                                             <div class="row">
 
 
-                                                                 <div class="col-md-6 col-12">
+                                                                <div class="col-md-6 col-12">
 
-                                                                             <div class="form-label-group">
+                                                                    <div class="form-label-group">
 
                                                                         <div class="custom-file">
-                                                                        <input type="file" class="custom-file-input" id="cpancardu" name="cpancardu">
+                                                                            <input type="file" class="custom-file-input" id="cpancardu" name="cpancardu">
                                                                             <label class="custom-file-label" for="cpancardu">Company Pan Card</label>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6 col-12">
-                                                                    
+
                                                                     <div class="form-label-group">
                                                                         <div class="custom-file">
                                                                             <input type="file" class="custom-file-input" id="gstdoc" name="gstdoc">
@@ -294,23 +294,26 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                    <div class="col-12">
+                                                                <div class="col-12">
                                                                     <button type="submit" class="btn btn-primary float-right btn-inline mb-50">
-                                                        {{ __('Register') }}
-                                                    </button>
-                                                                        <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
-                                                                    </div>
+                                                                        {{ __('Register') }}
+                                                                    </button>
+                                                                    <button type="reset" class="btn btn-outline-warning mr-1 mb-1 waves-effect waves-light">Reset</button>
                                                                 </div>
                                                             </div>
+                                                        </div>
                             </form>
                         </div>
                     </div>
+
+                </section>
             </div>
         </div>
     </div>
+
     <!-- END: Content-->
 
-  
+
     <!-- BEGIN: Vendor JS-->
     <script src="{{ url('/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
