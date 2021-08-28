@@ -54,11 +54,9 @@
                                                                 Category
                                                             </div>
                                                             <div class="form-group" data-select2-id="125">
-                                                                <select class="form-control"  onchange="getcat(this.value);" id="category"   name="category">
+                                                                <select class="form-control" id="category" name="category">
                                                                 <option selected>Select category</option>
-@foreach ($categories as $item)
-<option value="{{ $item->id }}">{{ $item->name }}</option>
-@endforeach
+
 </select>
                                                             </div>
                                                         </div>
@@ -68,6 +66,15 @@
                                                             <div class="form-group" data-select2-id="125">
                     <select class="form-control" name="subcategory" id="subcategory">
                            <option value="-1">-Select subcategory-</option>
+                              </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-12" id="subcat_id_div">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Sub Sub category </div>
+                                                            <div class="form-group" data-select2-id="125">
+                    <select class="form-control" name="subsubcategory" id="subsubcategory">
+                           <option value="-1">-Select sub subcategory-</option>
                               </select>
                                                             </div>
                                                         </div>
@@ -133,7 +140,7 @@
 
 </section>
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 
  function getcat(cat_id) {
@@ -145,8 +152,75 @@
         });
  }
 
-</script>
+</script> -->
 
+<script>
+var myObj = {
+  init: function () {
+    var that = this;
+    this.load_category();
+    document.getElementById("category").addEventListener("change", function () {
+      that.load_subcategory(this.value);
+    });
+    document.getElementById("subcategory").addEventListener("change", function () {
+      that.load_subsubcategory(this.value);
+    });
+  },
+  load_category: function () {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/categories", true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("category").appendChild(op);
+      });
+    };
+    xhr.send();
+  },
+  load_subcategory: function (id) {
+    document.getElementById("subcategory").innerHTML='';
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/subcategories/" + id, true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("subcategory").appendChild(op);
+      });
+    };
+    xhr.send();
+  },
+  load_subsubcategory: function(id)
+  {
+    document.getElementById("subsubcategory").innerHTML='';
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/categorieswithsubcat" + id, true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("subsubcategory").appendChild(op);
+      });
+    };
+    xhr.send();
+  }
+}
+myObj.init();
+
+</script>
 @section('js')
 <script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
 <script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
