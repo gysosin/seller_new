@@ -56,39 +56,35 @@
                                             <div class="card-content">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-12 mb-2">
-                                                            <a href="https://select2.org/getting-started/installation" target="_blank">For more information </a>
-                                                        </div>
-                                                        <div class="col-sm-6 col-12" data-select2-id="126">
+                                                    <div class="col-sm-6 col-12" data-select2-id="126">
                                                             <div class="text-bold-600 font-medium-2">
                                                                 Category
                                                             </div>
                                                             <div class="form-group" data-select2-id="125">
-                                                                <select class="select2 form-control select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true" name="category">
-                                                                    <option value="square" data-select2-id="3">Square</option>
-                                                                    <option value="rectangle" data-select2-id="133">Rectangle</option>
-                                                                    <option value="rombo" data-select2-id="134">Rombo</option>
-                                                                    <option value="romboid" data-select2-id="135">Romboid</option>
-                                                                    <option value="trapeze" data-select2-id="136">Trapeze</option>
-                                                                    <option value="traible" data-select2-id="137">Triangle</option>
-                                                                    <option value="polygon" data-select2-id="138">Polygon</option>
-                                                                </select>
+                                                                <select class="form-control" id="category" name="category">
+                                                                <option selected>Select category</option>
+
+</select>
                                                             </div>
                                                         </div>
-                                                        <div class="col-sm-6 col-12" data-select2-id="126">
+                                                        <div class="col-sm-6 col-12" id="subcat_id_div">
                                                             <div class="text-bold-600 font-medium-2">
                                                                 Sub category </div>
                                                             <div class="form-group" data-select2-id="125">
-                                                                <select class="select2 form-control select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true" name="scategory">
-                                                                    <option value="square" data-select2-id="3">Square</option>
-                                                                    <option value="rectangle" data-select2-id="133">Rectangle</option>
-                                                                    <option value="rombo" data-select2-id="134">Rombo</option>
-                                                                    <option value="romboid" data-select2-id="135">Romboid</option>
-                                                                    <option value="trapeze" data-select2-id="136">Trapeze</option>
-                                                                    <option value="traible" data-select2-id="137">Triangle</option>
-                                                                    <option value="polygon" data-select2-id="138">Polygon</option>
-                                                                </select>
+                    <select class="form-control" name="subcategory" id="subcategory">
+                           <option value="-1">-Select subcategory-</option>
+                              </select>
                                                             </div>
+                                                        </div>
+                                                        <div class="col-sm-6 col-12" id="subcat_id_div">
+                                                            <div class="text-bold-600 font-medium-2">
+                                                                Sub Sub category </div>
+                                                            <div class="form-group" data-select2-id="125">
+                    <select class="form-control" name="subsubcategory" id="subsubcategory">
+                           <option value="-1">-Select sub subcategory-</option>
+                              </select>
+                                                            </div>
+                                                        </div>
                                                         </div>
 
 
@@ -151,6 +147,74 @@
     </div>
 
 </section>
+
+<script>
+var myObj = {
+  init: function () {
+    var that = this;
+    this.load_category();
+    document.getElementById("category").addEventListener("change", function () {
+      that.load_subcategory(this.value);
+    });
+    document.getElementById("subcategory").addEventListener("change", function () {
+      that.load_subsubcategory(this.value);
+    });
+  },
+  load_category: function () {
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/categories", true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("category").appendChild(op);
+      });
+    };
+    xhr.send();
+  },
+  load_subcategory: function (id) {
+    document.getElementById("subcategory").innerHTML='';
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/subcategories/" + id, true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("subcategory").appendChild(op);
+      });
+    };
+    xhr.send();
+  },
+  load_subsubcategory: function(id)
+  {
+    document.getElementById("subsubcategory").innerHTML='';
+    var xhr = new XMLHttpRequest();
+
+    xhr.open("GET", "http://194.163.149.207:8585/api/categorieswithsubcat" + id, true);
+
+    xhr.onload = function () {
+      var countries = JSON.parse(xhr.responseText);
+      countries.forEach(function (value) {
+        var op = document.createElement("option");
+        op.innerText = value.name;
+        op.setAttribute("value", value.id);
+        document.getElementById("subsubcategory").appendChild(op);
+      });
+    };
+    xhr.send();
+  }
+}
+myObj.init();
+
+</script>
 @section('js')
 <script src="../../../app-assets/vendors/js/editors/quill/katex.min.js"></script>
 <script src="../../../app-assets/vendors/js/editors/quill/highlight.min.js"></script>
